@@ -382,13 +382,13 @@ pre .deletion {
   padding-bottom: 0.2em;
   letter-spacing: 0.2em;
   margin: 10px 0;
-  border-bottom: 5px solid #222;
+  border-bottom: 5px solid #b91d47;
 }
 .blog-title:hover {
-  border-color: #33a6b8;
+  border-color: #b91d47;
 }
 .blog-title:hover a {
-  color: #33a6b8;
+  color: #b91d47;
 }
 .blog-title a {
   position: relative;
@@ -439,10 +439,10 @@ pre .deletion {
 }
 .nav a {
   font-weight: bold;
-  color: #4f5759;
+  color: #1d1d1d;
 }
 .nav a:hover {
-  color: #33a6b8;
+  color: #b91d47;
 }
 .nav-icon {
   font-family: FontAwesome;
@@ -540,6 +540,7 @@ pre .deletion {
 .post {
   margin-bottom: 5em;
   position: relative;
+  background: #fff;
 }
 .post .entry-header {
   margin-bottom: 2em;
@@ -548,6 +549,10 @@ pre .deletion {
   font-weight: bold;
   font-size: 220%;
   margin: 0;
+  color: #4f5759 !important;
+}
+.post .entry-title a:hover {
+  color: #b91d47;
 }
 .article-devider {
   width: 8%;
@@ -557,7 +562,7 @@ pre .deletion {
 }
 .entry-meta-header {
   position: absolute;
-  top: 0.5em;
+  top: 0.8em;
   left: -200px;
   width: 180px;
   font-size: 85%;
