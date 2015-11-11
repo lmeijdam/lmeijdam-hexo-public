@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Lars Meijdam</title>
+  <title>And then i met Hexo | Lars Meijdam</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content=".Net and Web developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lars Meijdam">
-<meta property="og:url" content="http://larsmeijdam.nl/index.html">
+  <meta name="description" content="After developing for a year now, I wanted to write stuff about it. Not because I’m a good developer, but because I want to keep track of my experiences in a somewhat interactive way. So I thought abou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="And then i met Hexo">
+<meta property="og:url" content="http://larsmeijdam.nl/2015/10/And-then-i-met-Hexo/index.html">
 <meta property="og:site_name" content="Lars Meijdam">
-<meta property="og:description" content=".Net and Web developer">
+<meta property="og:description" content="After developing for a year now, I wanted to write stuff about it. Not because I’m a good developer, but because I want to keep track of my experiences in a somewhat interactive way. So I thought abou">
+<meta property="og:updated_time" content="2015-11-11T12:19:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lars Meijdam">
-<meta name="twitter:description" content=".Net and Web developer">
+<meta name="twitter:title" content="And then i met Hexo">
+<meta name="twitter:description" content="After developing for a year now, I wanted to write stuff about it. Not because I’m a good developer, but because I want to keep track of my experiences in a somewhat interactive way. So I thought abou">
   
   
     <link rel="icon" href="favicon.png">
@@ -112,13 +113,12 @@
 </aside>
 
       
-      <section id="main">
-      <article id="post-And-then-i-met-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-And-then-i-met-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       
 	
-		<a href="/2015/10/And-then-i-met-Hexo/" itemprop="url"><img src="http://www.hover.com/wp-content/uploads/2014/04/blog-button.png" class="article-banner"></a>
+		<img src="http://www.hover.com/wp-content/uploads/2014/04/blog-button.png" class="article-banner">
 	
 
 
@@ -129,8 +129,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/And-then-i-met-Hexo/">And then i met Hexo</a>
+    <h1 class="article-title" itemprop="name">
+      And then i met Hexo
     </h1>
   
 
@@ -155,12 +155,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>After developing for a year now, I wanted to write stuff about it. Not because I’m a good developer, but because I want to keep track of my experiences in a somewhat interactive way. So I thought about creating a blog. But then… Where to start?, where to host?, what language?… Use Wordpress, or something completely different?. All these questions came by while thinking about creating a blog. At that moment I saw a blog of a friend, <a href="http://www.marcofranssen.nl/">www.marcofranssen.nl</a>, and I questioned him on how he created that blog. At first he said he created it with Wordpress, but that was getting to slow when more posts were created. So he said he had rebuilt his blog to a static site generator, and let me meet <a href="http://www.hexo.io/">Hexo</a>. </p>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/And-then-i-met-Hexo/#more">Read More</a>
-          </p>
-        
+                
+        <p>After developing for a year now, I wanted to write stuff about it. Not because I’m a good developer, but because I want to keep track of my experiences in a somewhat interactive way. So I thought about creating a blog. But then… Where to start?, where to host?, what language?… Use Wordpress, or something completely different?. All these questions came by while thinking about creating a blog. At that moment I saw a blog of a friend, <a href="http://www.marcofranssen.nl/" target="_blank" rel="external">www.marcofranssen.nl</a>, and I questioned him on how he created that blog. At first he said he created it with Wordpress, but that was getting to slow when more posts were created. So he said he had rebuilt his blog to a static site generator, and let me meet <a href="http://www.hexo.io/" target="_blank" rel="external">Hexo</a>. </p>
+<a id="more"></a>
+<h2 id="Hexo_as_a_blogging_framework">Hexo as a blogging framework</h2><p>Hexo is a, for NodeJs optimized, blogging framework. On its <a href="https://hexo.io/" target="_blank" rel="external">homepage</a> you can find several benefits of using Hexo for your blog. Also when you navigate to the <a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo documentation</a> you will find all the necessary things to get you starting using Hexo. But to give you a head start, I will describe some of the basics here in this post.</p>
+<h3 id="Installation">Installation</h3><p>Before using Hexo you first need to install it using the Node Package Manager (npm). Which can be found <a href="https://www.npmjs.com/" target="_blank" rel="external">here</a>. When installed you can start your command prompt and type in the following command;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>This commando will install hexo globally (using the -g parameter). You can use all the ‘hexo’ commands when accessing the command prompt in every destination.</p>
+<h3 id="Get_started_using_Hexo">Get started using Hexo</h3><p>To use Hexo, you first need to do some commands to get started. One of the commands will help you initialize a new folder for Hexo. The command for this is;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<p>Now a new folder with the name ‘blog’  is created and initialized for Hexo. Now you can just use one of the node default commands to install all the dependencies in that folder. You can do this with;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>npm install will install all the dependencies written in the package.json file, which was created with the ‘hexo init’ command. Whenever you see a package.json(with dependencies) file in a folder, you can use the npm install command to install all the required items in a ‘node_modules’ folder.</p>
+<h4 id="Okay_and_now_?…">Okay and now ?…</h4><p>Now you are set to create your first post. Hexo has some handy commands to create stuff. To create a post just use;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"name"</span></span><br></pre></td></tr></table></figure>
+<p>This will create a new name.md(markdown) file in the ‘source/_posts’ folder. You can open this file to edit its content using <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="external">Markdown</a>. You can find a cheatsheet on all the different Markdown possibilities <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet" target="_blank" rel="external">here</a>. Hexo uses different layouts which you can use. for example you can also create a page with </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page <span class="string">"name"</span></span><br></pre></td></tr></table></figure>
+<p>Above command will create a new folder named after the ‘name’ parameter. This folder will contain a index.md file which can also be edited.</p>
+<p>Now you’ve created your first post it’s time to show it in a browser. Start the Hexo server locally with;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>The server will now run on <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> by default. When you navigate to this url you will see a post which Hexo already created with the ‘hexo init’ command.</p>
+<h3 id="Cool,_what’s_next_?!">Cool, what’s next ?!</h3><p>If you’re interested in continue using Hexo I have to send you to the <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> of Hexo. Here you can find all the things Hexo has to offer, how to change your theme, how to deploy it to a repository and many more. If you have any suggestions on what i need to write about using Hexo, please leave a comment below.</p>
+<p>Have fun using Hexo and creating your own blog!</p>
+
       
     </div>
     <footer class="article-footer">
@@ -172,131 +189,45 @@
     </footer>
   </div>
   
-</article>
-
-
-
     
-      <article id="post-Angular-made-simple-part-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      
-	
-		<a href="/2015/10/Angular-made-simple-part-1/" itemprop="url"><img src="http://i2.wp.com/wptheming.com/wp-content/uploads/2015/03/angular-banner.jpg?resize=800%2C300" class="article-banner"></a>
-	
-
-
-
-    
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/Angular-made-simple-part-1/">Angular made simple - Part one</a>
-    </h1>
   
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/Angular-made-simple-part-1/">
-      <time datetime="2015-10-20T16:24:41.000Z" itemprop="datePublished">2015_10</time>
+    <a href="/2015/10/Angular-made-simple-part-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Angular made simple - Part one</div>
     </a>
-  </div>
+  
+</nav>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>As this is my first blog post, I want to start off with the thing that is the most fresh in my mind… AngularJS. AngularJS is a Javascript framework developed and used internally by Google. In this post I want to dive into the things I learned while developing with AngularJS. Please note that I will refer to AngularJS when I type Angular (without the JS). For more information about Angular you can dive into the homepage of Angular found <a href="https://www.angularjs.org/">here</a>.</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/Angular-made-simple-part-1/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/" data-id="cigur4eb5000j9ocox4mlprlt" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-
-    
-      <article id="post-first-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
+<section id="comments">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/first-post/">First!</a>
-    </h1>
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=fbConfig.app_id";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://larsmeijdam.nl/2015/10/And-then-i-met-Hexo/index.html" data-num-posts="5" data-width="655" data-colorscheme="light"></div>
+
+
+
+
+      
   
+</section>
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/first-post/">
-      <time datetime="2015-10-02T08:28:30.000Z" itemprop="datePublished">2015_10</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/beginning/">beginning</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Well hello there! Welcome to my personal blog! Let me first introduce myself… My name is Lars Meijdam and I live in the Netherlands. I’ve received a Bachelor degree in Software Engineering and am now currently working at Atos. If you want to know more about me… Please navigate to the <a href="/about">About</a> page!</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/first-post/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://larsmeijdam.nl/2015/10/first-post/" data-id="cigur4eb3000c9oco9ut0jqp9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/first/">first</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/introduction/">introduction</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    </section>
+</section>
       
         <aside id="sidebar">
   
