@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/index.html">
 <meta property="og:site_name" content="Lars Meijdam">
 <meta property="og:description" content="As this is my first blog post, I want to start off with the thing that is the most fresh in my mind… AngularJS. AngularJS is a Javascript framework developed and used internally by Google. In this pos">
-<meta property="og:updated_time" content="2015-10-29T14:08:32.000Z">
+<meta property="og:updated_time" content="2016-02-20T12:30:01.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular made simple - Part one">
 <meta name="twitter:description" content="As this is my first blog post, I want to start off with the thing that is the most fresh in my mind… AngularJS. AngularJS is a Javascript framework developed and used internally by Google. In this pos">
@@ -89,7 +89,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        3
+        4
         <span>posts</span>
       </div>
       <div class="article-info-block">
@@ -158,17 +158,17 @@
                 
         <p>As this is my first blog post, I want to start off with the thing that is the most fresh in my mind… AngularJS. AngularJS is a Javascript framework developed and used internally by Google. In this post I want to dive into the things I learned while developing with AngularJS. Please note that I will refer to AngularJS when I type Angular (without the JS). For more information about Angular you can dive into the homepage of Angular found <a href="https://www.angularjs.org/" target="_blank" rel="external">here</a>.</p>
 <a id="more"></a> 
-<h2 id="Part_One">Part One</h2><p>I want to start off with some of the basics. I will describe the use of modules, controllers and the usage of scope and how to use something other then scope. Besides from that I will write down some tips I got while working with Angular.</p>
-<h2 id="Installation">Installation</h2><p>To use Angular you must first download this from either the homepage or with the use of package managers. To install Angular with the help of the <a href="https://www.npmjs.com/" target="_blank" rel="external">Node Package Manager</a>  (by NodeJS);</p>
+<h2 id="Part-One"><a href="#Part-One" class="headerlink" title="Part One"></a>Part One</h2><p>I want to start off with some of the basics. I will describe the use of modules, controllers and the usage of scope and how to use something other then scope. Besides from that I will write down some tips I got while working with Angular.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>To use Angular you must first download this from either the homepage or with the use of package managers. To install Angular with the help of the <a href="https://www.npmjs.com/" target="_blank" rel="external">Node Package Manager</a>  (by NodeJS);</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install angular</span><br></pre></td></tr></table></figure>
 <p>After installing Angular into your project you can reference to the javascript files with the following code in your index.html;</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- reference the script in your head tag with --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/node_modules/angular/angular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- or --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/node_modules/angular/angular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>You can also choose to download Angular manually from the website. The reference to your script file is then in which folder you downloaded or copied the Angular files into.</p>
-<h2 id="First_usage">First usage</h2><p>When I first encountered Angular I didn’t know what to expect. With the use of some examples and tutorials I became very enthousiastic about what you can achieve with the help of Angular in your project. Let me explain some of the basics of Angular here. I made a <a href="http://jsfiddle.net/lmeijdam/fumkqo2m/5/light/" target="_blank" rel="external">JsFiddle</a> for you guys to play with. If you press the ‘Html’ section you can see the code I used to make this possible. Let me give you a head start; Almost nothing! Check it out for yourself below!</p>
+<h2 id="First-usage"><a href="#First-usage" class="headerlink" title="First usage"></a>First usage</h2><p>When I first encountered Angular I didn’t know what to expect. With the use of some examples and tutorials I became very enthousiastic about what you can achieve with the help of Angular in your project. Let me explain some of the basics of Angular here. I made a <a href="http://jsfiddle.net/lmeijdam/fumkqo2m/5/light/" target="_blank" rel="external">JsFiddle</a> for you guys to play with. If you press the ‘Html’ section you can see the code I used to make this possible. Let me give you a head start; Almost nothing! Check it out for yourself below!</p>
 <iframe width="100%" height="210" src="//jsfiddle.net/lmeijdam/fumkqo2m/5/embedded/result,html/"></iframe>
 
 <p>But wait … there’s more! And a lot more. Angular is full of features which you can read about in the <a href="https://docs.angularjs.org/api" target="_blank" rel="external">Api Reference</a> written by the Angular team.</p>
-<h2 id="Modules">Modules</h2><p>Angular is a modular framework which works with modules. To define a module in Angular you need to add 2 new things.</p>
+<h2 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h2><p>Angular is a modular framework which works with modules. To define a module in Angular you need to add 2 new things.</p>
 <ul>
 <li>You first need to create a new .js file (app.js is commonly used).</li>
 <li>Updating your index.html ‘html’ or ‘body’ tag with an Angular attribute called ‘ng-app’</li>
@@ -180,20 +180,20 @@
 <p><em>An immediately-invoked function expression (or IIFE, pronounced “iffy”[1]) is a JavaScript design pattern which produces a lexical scope using JavaScript’s function scoping</em>…</p>
 </blockquote>
 <p>More information about the iffy on <a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression" target="_blank" rel="external">wiki</a>. I use iffy’s since the training I got and I will try to use it whenever i create a new Angular app. <strong>Please notice for simplicity and readability; I will remove the iffy code in my next examples</strong>.</p>
-<h2 id="Controllers">Controllers</h2><p>Next to Modules, Angular uses controllers. A controller in Angular exists to control the view from some code behind (in JS). A controller can be applied to a Module you already defined. Let’s take the example from above with the module ‘MyApp’. To add a controller we must do the following things in code behind;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Update existing code with;</span></span><br><span class="line">angular.module(<span class="string">"MyApp"</span>, []).controller(<span class="string">"FirstController"</span>, FirstController);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// controller code</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Or create a new file (like controller.js) where you then use;</span></span><br><span class="line"><span class="comment">// Here is when you dont use the [] anymore when 'getting' the module</span></span><br><span class="line">angular.module(<span class="string">"MyApp"</span>).controller(<span class="string">"FirstController"</span>, FirstController);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// controller code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Controllers"><a href="#Controllers" class="headerlink" title="Controllers"></a>Controllers</h2><p>Next to Modules, Angular uses controllers. A controller in Angular exists to control the view from some code behind (in JS). A controller can be applied to a Module you already defined. Let’s take the example from above with the module ‘MyApp’. To add a controller we must do the following things in code behind;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Update existing code with;</span></span><br><span class="line">angular.module(<span class="string">"MyApp"</span>, []).controller(<span class="string">"FirstController"</span>, FirstController);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// controller code</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Or create a new file (like controller.js) where you then use;</span></span><br><span class="line"><span class="comment">// Here is when you dont use the [] anymore when 'getting' the module</span></span><br><span class="line">angular.module(<span class="string">"MyApp"</span>).controller(<span class="string">"FirstController"</span>, FirstController);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// controller code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Before you can use a controller in your index.html you must first define the element which is listening to the controller. You can achieve this by doing the following;</p>
-<pre><code class="html"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">ng-app</span>=<span class="value">"MyApp"</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<pre><code class="html"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">"MyApp"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">head</span>&gt;</span>
     <span class="comment">&lt;!-- code --&gt;</span>
-  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">body</span> <span class="attribute">ng-controller</span>=<span class="value">"FirstController"</span>&gt;</span> <span class="comment">&lt;!-- the name of the controller --&gt;</span>  
+  <span class="tag">&lt;/<span class="name">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-controller</span>=<span class="string">"FirstController"</span>&gt;</span> <span class="comment">&lt;!-- the name of the controller --&gt;</span>  
     <span class="comment">&lt;!-- code --&gt;</span>
-  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
 </code></pre>
 <p>In the example above, the whole body can be controlled from the FirstController. You can also use a specific section when you apply the ng-controller attribute to a ‘div’ tag inside the body. This way you can use multiple controllers in the same view but different elements on that view.</p>
-<h3 id="$scope">$scope</h3><p>The scope parameter used in the definition of FirstController makes use of 2-way binding to the view (basicly said). A property added to scope, for example; $scope.title = “test”, can be used in html with the use of the double curly braces which were also used in the JsFiddle example to show the input of the user. $scope can be used for many things. You can use it to define properties, functions, sending events, etc. but scope is misused also. That’s why John Papa (Angular Evangelist) refers in his <a href="https://github.com/johnpapa/angular-styleguide" target="_blank" rel="external">Angular Styleguide</a> to the use of the ControllerAs syntax. The styleguide has some of the commonly used Angular development principles. When you get ready to work with Angular, don’t hesitate about reading this. Just do it!</p>
-<h3 id="ControllerAs">ControllerAs</h3><p>The ControllerAs has almost the same implementation as the traditional controller, but is difference when using $scope. You can still use $scope, but its better to avoid using it with only binding properties to a view. See:</p>
+<h3 id="scope"><a href="#scope" class="headerlink" title="$scope"></a>$scope</h3><p>The scope parameter used in the definition of FirstController makes use of 2-way binding to the view (basicly said). A property added to scope, for example; $scope.title = “test”, can be used in html with the use of the double curly braces which were also used in the JsFiddle example to show the input of the user. $scope can be used for many things. You can use it to define properties, functions, sending events, etc. but scope is misused also. That’s why John Papa (Angular Evangelist) refers in his <a href="https://github.com/johnpapa/angular-styleguide" target="_blank" rel="external">Angular Styleguide</a> to the use of the ControllerAs syntax. The styleguide has some of the commonly used Angular development principles. When you get ready to work with Angular, don’t hesitate about reading this. Just do it!</p>
+<h3 id="ControllerAs"><a href="#ControllerAs" class="headerlink" title="ControllerAs"></a>ControllerAs</h3><p>The ControllerAs has almost the same implementation as the traditional controller, but is difference when using $scope. You can still use $scope, but its better to avoid using it with only binding properties to a view. See:</p>
 <pre><code class="javascript">angular.module(<span class="string">"MyApp"</span>).controller(<span class="string">"FirstController"</span>, FirstController);
 
 <span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params"></span>)</span>{
@@ -203,24 +203,26 @@
 }
 </code></pre>
 <p>To use above controller as syntax in html. You must change the attribute to;</p>
-<pre><code class="html"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">ng-controller</span>=<span class="value">"FirstController as first"</span>&gt;</span> <span class="comment">&lt;!-- the name of the controller --&gt;</span>  
+<pre><code class="html"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-controller</span>=<span class="string">"FirstController as first"</span>&gt;</span> <span class="comment">&lt;!-- the name of the controller --&gt;</span>  
   <span class="comment">&lt;!-- code --&gt;</span>
   <span class="comment">&lt;!-- this will output the 'test' value --&gt;</span>
   <span class="comment">   {{ first.title }}  </span>
-<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
 </code></pre>
 <p>As you can see the $scope parameter is gone and the ‘this’ keyword is added. In this way you can achieve a more structured controller where $scope does not contain ALL the code.</p>
-<h2 id="References">References</h2><ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li>John Papa’s styling guide; <a href="https://github.com/johnpapa/angular-styleguide" target="_blank" rel="external">Styleguide</a></li>
 <li>Todd Motto’s post about the Controller As syntax; <a href="http://toddmotto.com/digging-into-angulars-controller-as-syntax/" target="_blank" rel="external">Todd Motto</a></li>
 <li>AngularJs - <a href="https://angularjs.org/" target="_blank" rel="external">https://angularjs.org/</a></li>
 </ul>
-<h3 id="Part_two-_already?!">Part two.. already?!</h3><p>Yep… Angular is pretty big to explain in just one post, so I will make several. In the next part I will dive more into injecting dependencies, services and some other stuff. I hope you enjoyed reading this. If you have any comments; please do not hesitate to comment below. </p>
+<h3 id="Part-two-already"><a href="#Part-two-already" class="headerlink" title="Part two.. already?!"></a>Part two.. already?!</h3><p>Yep… Angular is pretty big to explain in just one post, so I will make several. In the next part I will dive more into injecting dependencies, services and some other stuff. I hope you enjoyed reading this. If you have any comments; please do not hesitate to comment below. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/" data-id="cigur4eb5000j9ocox4mlprlt" class="article-share-link">Share</a>
+      <a data-url="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/" data-id="cikv7fsz5000kr0y1zehpr7xl" class="article-share-link">Share</a>
+      
+        <a href="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -255,23 +257,13 @@
 
 <section id="comments">
   
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=fbConfig.app_id";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 
-<div class="fb-comments" data-href="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/index.html" data-num-posts="5" data-width="655" data-colorscheme="light"></div>
-
-
-
-
-      
   
 </section>
 
@@ -288,6 +280,23 @@
           <li>
             
             <div class="item-thumbnail">
+              <a href="/2016/02/Let-s-talk-Services/" class="thumbnail">
+  
+    <span style="background-image:url(http://media02.hongkiat.com/angularjs-tutorials-screencast/angularjs.jpg)" alt="Let&#39;s talk Services" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/AngularJS/">AngularJS</a></p>
+              <p class="item-title"><a href="/2016/02/Let-s-talk-Services/" class="title">Let&#39;s talk Services</a></p>
+              <p class="item-date"><time datetime="2016-02-20T14:09:31.000Z" itemprop="datePublished">2016_02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
               <a href="/2015/10/And-then-i-met-Hexo/" class="thumbnail">
   
     <span style="background-image:url(https://pbs.twimg.com/profile_images/476729162707644418/mQZOTo9f.png)" alt="And then i met Hexo" class="thumbnail-image"></span>
@@ -298,7 +307,7 @@
             <div class="item-inner">
               <p class="item-category"><a class="article-category-link" href="/categories/Blogging/">Blogging</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Blogging/Hexo/">Hexo</a></p>
               <p class="item-title"><a href="/2015/10/And-then-i-met-Hexo/" class="title">And then i met Hexo</a></p>
-              <p class="item-date"><time datetime="2015-10-29T11:40:06.000Z" itemprop="datePublished">2015_10</time></p>
+              <p class="item-date"><time datetime="2015-10-30T17:24:41.000Z" itemprop="datePublished">2015_10</time></p>
             </div>
           </li>
         
@@ -345,7 +354,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blogging/">Blogging</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Blogging/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/beginning/">beginning</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blogging/">Blogging</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Blogging/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/beginning/">beginning</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -354,7 +363,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">tag cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/blogging/" style="font-size: 10px;">blogging</a> <a href="/tags/first/" style="font-size: 10px;">first</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/introduction/" style="font-size: 10px;">introduction</a>
+      <a href="/tags/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/blogging/" style="font-size: 10px;">blogging</a> <a href="/tags/first/" style="font-size: 10px;">first</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/introduction/" style="font-size: 10px;">introduction</a>
     </div>
   </div>
 
@@ -367,11 +376,22 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2015 Lars Meijdam
+      &copy; 2016 Lars Meijdam
     </div>
   </div>
 </footer>
     
+
+<script>
+  var disqus_shortname = 'larsmeijdam';
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
 
 
 
