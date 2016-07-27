@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Lars Meijdam</title>
+  <subtitle>personal webblog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://larsmeijdam.nl/"/>
+  <updated>2016-07-26T10:06:17.513Z</updated>
+  <id>http://larsmeijdam.nl/</id>
+  
+  <author>
+    <name>Lars Meijdam</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Let&#39;s talk Services</title>
+    <link href="http://larsmeijdam.nl/2016/02/Let-s-talk-Services/"/>
+    <id>http://larsmeijdam.nl/2016/02/Let-s-talk-Services/</id>
+    <published>2016-02-20T14:09:31.000Z</published>
+    <updated>2016-07-26T10:06:17.513Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hello Again! As it has been a while since I’ve written something, I’d like to start off with the first 2016 post about the second part of my Angular experiences. In the first <a href="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/">part</a> I started off with some of the Angular basics and installation. In this post I want to set my focus on injecting dependencies and using services in Angular.</p>
+<a id="more"></a>
+<h2 id="Dependency_Injection">Dependency Injection</h2><p>Something cool to programming is the concept of Dependency Injection. It’s a pattern where the inversion of control principle is implemented. Using DI(Dependency Injection) enables a programmer to be more modular. It also enables to create more ‘task specific modules’ in your program. A lot of programming languages already support the use of DI in different frameworks and libraries. So does Google in Angular. In Angular we have the ‘$injector’ class which represent the DI functionality.</p>
+<h3 id="Injecting_in_Angular">Injecting in Angular</h3><p>Injecting is already done from the start when using Angular. If you look to the module definition;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="pi">  'use strict'</span>;</span><br><span class="line">  angular.module(<span class="string">"MyApp"</span>, [<span class="string">"OtherModule"</span>]); <span class="comment">// setter for a module with the name MyApp</span></span><br><span class="line"></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">You can inject other modules between the <span class="string">'[]'</span>. Here the $injector <span class="class"><span class="keyword">class</span> <span class="title">will</span> <span class="title">handle</span> <span class="title">the</span> <span class="title">injection</span>. <span class="title">Same</span> <span class="title">goes</span> <span class="title">for</span> <span class="title">extending</span> <span class="title">the</span> <span class="title">current</span> <span class="title">module</span>. <span class="title">If</span> <span class="title">you</span> <span class="title">look</span> <span class="title">at</span> <span class="title">getting</span> <span class="title">a</span> <span class="title">module</span> <span class="title">and</span> <span class="title">adding</span> <span class="title">a</span> <span class="title">controller</span> <span class="title">to</span> <span class="title">it</span>. <span class="title">The</span> $<span class="title">injector</span> <span class="title">class</span> <span class="title">is</span> <span class="title">used</span> <span class="title">again</span>. <span class="title">Example</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">`javascript</span><br><span class="line">// Update existing code with;</span><br><span class="line">angular.module("MyApp")</span><br><span class="line">        .controller("FirstController", FirstController);</span><br><span class="line"></span><br><span class="line">function FirstController($scope)&#123;</span><br><span class="line">  // controller code</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>In the example above you can see the ‘$scope’ variable which is injected into the controller. Another example of injecting stuff is;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Update existing code with;</span></span><br><span class="line">angular.module(<span class="string">"MyApp"</span>)</span><br><span class="line">        .controller(<span class="string">"FirstController"</span>, FirstController);</span><br><span class="line"></span><br><span class="line">FirstController.$inject = [<span class="string">'$scope'</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// controller code</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+<p>Injecting in this example makes the code more minification safe and more readable. Next to Angular’s default injectable objects, you can also implement manually created objects. Objects like Services.</p>
+<h2 id="Angular_services">Angular services</h2><p>AngularJS is a huge fan of modularity and extensibility. I think that is one of the main reason AngularJS introduces Services into the framework. To create a layer that is responsible and easy to extend when it comes to working with third-party data, local data or even handling shared logic between controllers in the application. In Angular, there are two different implementations of using services. The types are Factory and Services, where the Factory is more flexible than a Service. They are both singleton and easily injectable in controllers or other services. It is recommended that both are single responisible. For example a ‘NotificationService’ or ‘MessageService’ gives a clear name and gives a good understanding for what responsibility it has. Both can be easily injected like; </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">"MyApp"</span>)</span><br><span class="line">      .controller(<span class="string">"FirstController"</span>, FirstController);</span><br><span class="line"></span><br><span class="line">FirstController.$inject[<span class="string">'ServiceName'</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params">ServiceName</span>)</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="-factory">.factory</h3><p>A Factory in Angular is actually something with the same purpose as the Factory Pattern, which makes it quite confusing in combination with a Service. A Factory creates, or at least returns, stuff. This can be objects, functions or even simple text or variables. As a developer you are quite free in what a factory returns. An example of a factory is shown below;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Define a factory;</span></span><br><span class="line">angular.module(<span class="string">"MyApp"</span>, [])</span><br><span class="line">        .factory(<span class="string">"AngularService"</span>, AngularService); <span class="comment">// &lt;&lt; notice the .factory</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Implementation</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">AngularService</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Method1</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="comment">// Do stuff</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    Method1: Method1,</span><br><span class="line">    Variable2: []</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>As you can see, the factory returns an object which can contain functions or other types of objects(like an Array) or variables. Next to the factory implementation, Angular also has the Service implementation.</p>
+<h3 id="-service">.service</h3><p>A Service in Angular is a constructor function. Under the hood a service is being called once with the ‘new’ keyword at runtime. It basicly returns a function with other functions, however… As it turns out, it is quite flexible as the Factory is in Angular. You can also return object literals or even plain data, like strings or booleans. In code a service looks like;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Define a factory;</span></span><br><span class="line">angular.module(<span class="string">"MyApp"</span>, [])</span><br><span class="line">        .service(<span class="string">"AngularService"</span>, AngularService); <span class="comment">// &lt;&lt; notice the .service</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Implementation</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">AngularService</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.Method1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="comment">// Do stuff or return </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>you can see that methods are added as public functions to the service. This way it can act as a public API. Viewing a service more in depth, you can actually see it returns a newly instantiated Factory. For reference I found this example in the source code;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">name, factoryFn, enforce</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> provider(name, &#123;</span><br><span class="line">    $get: enforce !== <span class="literal">false</span> ? enforceReturnValue(name, factoryFn) : factoryFn</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">service</span>(<span class="params">name, constructor</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> factory(name, [<span class="string">'$injector'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$injector</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $injector.instantiate(constructor);</span><br><span class="line">  &#125;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Above can be found in the original source at: <a href="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js" target="_blank" rel="external">Angular 1.5.6</a></p>
+<h3 id="Main_Differences">Main Differences</h3><p>the long living question is <strong>‘When to use Factory or Service?’</strong>. Although you can do the same with both implementation, my own preference are with the Factory notation. I like the object-like notation more. If I look at the Angular Styleguide and other great Angular developers I see that all use a Factory over a Service.</p>
+<h2 id="To_be_continued…">To be continued…</h2><p>Because the greatness Angular already has brought at this time only two parts is not enough to cover that. So in the future more parts will come with in the next part the usage of custom directives and handling events. Also now with the release of <a href="http://www.angular.io/" target="_blank" rel="external">Angular 2</a> I will need to dig into that to create a post about that. See you next time! </p>
+<h3 id="References">References</h3><p><a href="http://blog.thoughtram.io/angular/2015/07/07/service-vs-factory-once-and-for-all.html" target="_blank" rel="external">An article by Pascal Precht</a></p>
+<p><a href="https://toddmotto.com/factory-versus-service" target="_blank" rel="external">The battle between factory and service by Todd Motto</a></p>
+<p><a href="https://github.com/johnpapa/angular-styleguide" target="_blank" rel="external">A Styleguide with some handy tips and recommendations by John Papa</a></p>
+<!--
+// <% if (theme.comment_provider == "facebook") {
+//       if (theme.facebook) { %>
+//       <%- partial('_partial/facebook_comment', {fbConfig: theme.facebook}) %>
+//       <% } %>
+//   <% } else if(config.disqus_shortname) { %>
+//   <% if (!index && post.comments && config.disqus_shortname){ %>
+// <section id="comments">
+//   <div id="disqus_thread">
+//     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+//   </div>
+// </section>
+// <% } else if (!index && post.comments && config.duoshuo_shortname){ %>
+//   <section id="comments">
+//     <div id="ds-thread" class="ds-thread" data-thread-key="<%- post.permalink %>" data-title="<%- post.title %>" data-url="<%- post.permalink %>">
+//       <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+//       </div>
+//   </section>
+// <% } %>
+//   <% } %>
+-->
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hello Again! As it has been a while since I’ve written something, I’d like to start off with the first 2016 post about the second part of my Angular experiences. In the first &lt;a href=&quot;http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/&quot;&gt;part&lt;/a&gt; I started off with some of the Angular basics and installation. In this post I want to set my focus on injecting dependencies and using services in Angular.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="AngularJS" scheme="http://larsmeijdam.nl/categories/AngularJS/"/>
+    
+    
+      <category term="AngularJS" scheme="http://larsmeijdam.nl/tags/AngularJS/"/>
+    
+      <category term="Javascript" scheme="http://larsmeijdam.nl/tags/Javascript/"/>
+    
+      <category term="Services" scheme="http://larsmeijdam.nl/tags/Services/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>And then i met Hexo</title>
+    <link href="http://larsmeijdam.nl/2015/10/And-then-i-met-Hexo/"/>
+    <id>http://larsmeijdam.nl/2015/10/And-then-i-met-Hexo/</id>
+    <published>2015-10-30T17:24:41.000Z</published>
+    <updated>2016-07-25T07:28:41.323Z</updated>
+    
+    <content type="html"><![CDATA[<p>After developing for a year now, I wanted to write stuff about it. Not because I’m a good developer, but because I want to keep track of my experiences in a somewhat interactive way. So I thought about creating a blog. But then… Where to start?, where to host?, what language?… Use Wordpress, or something completely different?. All these questions came by while thinking about creating a blog. At that moment I saw a blog of a friend, <a href="http://www.marcofranssen.nl/" target="_blank" rel="external">www.marcofranssen.nl</a>, and I questioned him on how he created that blog. At first he said he created it with Wordpress, but that was getting to slow when more posts were created. So he said he had rebuilt his blog to a static site generator, and let me meet <a href="http://www.hexo.io/" target="_blank" rel="external">Hexo</a>. </p>
+<a id="more"></a>
+<h2 id="Hexo_as_a_blogging_framework">Hexo as a blogging framework</h2><p>Hexo is a, for NodeJs optimized, blogging framework. On its <a href="https://hexo.io/" target="_blank" rel="external">homepage</a> you can find several benefits of using Hexo for your blog. Also when you navigate to the <a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo documentation</a> you will find all the necessary things to get you starting using Hexo. But to give you a head start, I will describe some of the basics here in this post.</p>
+<h3 id="Installation">Installation</h3><p>Before using Hexo you first need to install it using the Node Package Manager (npm). Which can be found <a href="https://www.npmjs.com/" target="_blank" rel="external">here</a>. When installed you can start your command prompt and type in the following command;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>This commando will install hexo globally (using the -g parameter). You can use all the ‘hexo’ commands when accessing the command prompt in every destination.</p>
+<h3 id="Get_started_using_Hexo">Get started using Hexo</h3><p>To use Hexo, you first need to do some commands to get started. One of the commands will help you initialize a new folder for Hexo. The command for this is;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<p>Now a new folder with the name ‘blog’  is created and initialized for Hexo. Now you can just use one of the node default commands to install all the dependencies in that folder. You can do this with;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>npm install will install all the dependencies written in the package.json file, which was created with the ‘hexo init’ command. Whenever you see a package.json(with dependencies) file in a folder, you can use the npm install command to install all the required items in a ‘node_modules’ folder.</p>
+<h4 id="Okay_and_now_?…">Okay and now ?…</h4><p>Now you are set to create your first post. Hexo has some handy commands to create stuff. To create a post just use;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"name"</span></span><br></pre></td></tr></table></figure>
+<p>This will create a new name.md(markdown) file in the ‘source/_posts’ folder. You can open this file to edit its content using <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="external">Markdown</a>. You can find a cheatsheet on all the different Markdown possibilities <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet" target="_blank" rel="external">here</a>. Hexo uses different layouts which you can use. for example you can also create a page with </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page <span class="string">"name"</span></span><br></pre></td></tr></table></figure>
+<p>Above command will create a new folder named after the ‘name’ parameter. This folder will contain a index.md file which can also be edited.</p>
+<p>Now you’ve created your first post it’s time to show it in a browser. Start the Hexo server locally with;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>The server will now run on <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> by default. When you navigate to this url you will see a post which Hexo already created with the ‘hexo init’ command.</p>
+<h3 id="Cool,_what’s_next_?!">Cool, what’s next ?!</h3><p>If you’re interested in continue using Hexo I have to send you to the <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> of Hexo. Here you can find all the things Hexo has to offer, how to change your theme, how to deploy it to a repository and many more. If you have any suggestions on what i need to write about using Hexo, please leave a comment below.</p>
+<p>Have fun using Hexo and creating your own blog!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;After developing for a year now, I wanted to write stuff about it. Not because I’m a good developer, but because I want to keep track of my experiences in a somewhat interactive way. So I thought about creating a blog. But then… Where to start?, where to host?, what language?… Use Wordpress, or something completely different?. All these questions came by while thinking about creating a blog. At that moment I saw a blog of a friend, &lt;a href=&quot;http://www.marcofranssen.nl/&quot;&gt;www.marcofranssen.nl&lt;/a&gt;, and I questioned him on how he created that blog. At first he said he created it with Wordpress, but that was getting to slow when more posts were created. So he said he had rebuilt his blog to a static site generator, and let me meet &lt;a href=&quot;http://www.hexo.io/&quot;&gt;Hexo&lt;/a&gt;. &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Blogging" scheme="http://larsmeijdam.nl/categories/Blogging/"/>
+    
+      <category term="Hexo" scheme="http://larsmeijdam.nl/categories/Blogging/Hexo/"/>
+    
+    
+      <category term="Javascript" scheme="http://larsmeijdam.nl/tags/Javascript/"/>
+    
+      <category term="blogging" scheme="http://larsmeijdam.nl/tags/blogging/"/>
+    
+      <category term="hexo" scheme="http://larsmeijdam.nl/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Angular made simple - Part one</title>
+    <link href="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/"/>
+    <id>http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/</id>
+    <published>2015-10-20T16:24:41.000Z</published>
+    <updated>2015-10-29T14:08:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>As this is my first blog post, I want to start off with the thing that is the most fresh in my mind… AngularJS. AngularJS is a Javascript framework developed and used internally by Google. In this post I want to dive into the things I learned while developing with AngularJS. Please note that I will refer to AngularJS when I type Angular (without the JS). For more information about Angular you can dive into the homepage of Angular found <a href="https://www.angularjs.org/" target="_blank" rel="external">here</a>.</p>
+<a id="more"></a> 
+<h2 id="Part_One">Part One</h2><p>I want to start off with some of the basics. I will describe the use of modules, controllers and the usage of scope and how to use something other then scope. Besides from that I will write down some tips I got while working with Angular.</p>
+<h2 id="Installation">Installation</h2><p>To use Angular you must first download this from either the homepage or with the use of package managers. To install Angular with the help of the <a href="https://www.npmjs.com/" target="_blank" rel="external">Node Package Manager</a>  (by NodeJS);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install angular</span><br></pre></td></tr></table></figure>
+<p>After installing Angular into your project you can reference to the javascript files with the following code in your index.html;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- reference the script in your head tag with --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/node_modules/angular/angular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- or --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/node_modules/angular/angular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>You can also choose to download Angular manually from the website. The reference to your script file is then in which folder you downloaded or copied the Angular files into.</p>
+<h2 id="First_usage">First usage</h2><p>When I first encountered Angular I didn’t know what to expect. With the use of some examples and tutorials I became very enthousiastic about what you can achieve with the help of Angular in your project. Let me explain some of the basics of Angular here. I made a <a href="http://jsfiddle.net/lmeijdam/fumkqo2m/5/light/" target="_blank" rel="external">JsFiddle</a> for you guys to play with. If you press the ‘Html’ section you can see the code I used to make this possible. Let me give you a head start; Almost nothing! Check it out for yourself below!</p>
+<iframe width="100%" height="210" src="//jsfiddle.net/lmeijdam/fumkqo2m/5/embedded/result,html/"></iframe>
+
+<p>But wait … there’s more! And a lot more. Angular is full of features which you can read about in the <a href="https://docs.angularjs.org/api" target="_blank" rel="external">Api Reference</a> written by the Angular team.</p>
+<h2 id="Modules">Modules</h2><p>Angular is a modular framework which works with modules. To define a module in Angular you need to add 2 new things.</p>
+<ul>
+<li>You first need to create a new .js file (app.js is commonly used).</li>
+<li>Updating your index.html ‘html’ or ‘body’ tag with an Angular attribute called ‘ng-app’</li>
+</ul>
+<p>See the code below:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="pi">  'use strict'</span>;</span><br><span class="line">  angular.module(<span class="string">"MyApp"</span>, []); <span class="comment">// setter for a module with the name MyApp</span></span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">ng-app</span>=<span class="value">"MyApp"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- All the html code --&gt;</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Seeing some weird JavaScript code in the example above? That is called an Immediately-invoked function expression or short called a iffy… From wiki:</p>
+<blockquote>
+<p><em>An immediately-invoked function expression (or IIFE, pronounced “iffy”[1]) is a JavaScript design pattern which produces a lexical scope using JavaScript’s function scoping</em>…</p>
+</blockquote>
+<p>More information about the iffy on <a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression" target="_blank" rel="external">wiki</a>. I use iffy’s since the training I got and I will try to use it whenever i create a new Angular app. <strong>Please notice for simplicity and readability; I will remove the iffy code in my next examples</strong>.</p>
+<h2 id="Controllers">Controllers</h2><p>Next to Modules, Angular uses controllers. A controller in Angular exists to control the view from some code behind (in JS). A controller can be applied to a Module you already defined. Let’s take the example from above with the module ‘MyApp’. To add a controller we must do the following things in code behind;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Update existing code with;</span></span><br><span class="line">angular.module(<span class="string">"MyApp"</span>, []).controller(<span class="string">"FirstController"</span>, FirstController);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// controller code</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Or create a new file (like controller.js) where you then use;</span></span><br><span class="line"><span class="comment">// Here is when you dont use the [] anymore when 'getting' the module</span></span><br><span class="line">angular.module(<span class="string">"MyApp"</span>).controller(<span class="string">"FirstController"</span>, FirstController);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// controller code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Before you can use a controller in your index.html you must first define the element which is listening to the controller. You can achieve this by doing the following;</p>
+<pre><code class="html"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">ng-app</span>=<span class="value">"MyApp"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="comment">&lt;!-- code --&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span> <span class="attribute">ng-controller</span>=<span class="value">"FirstController"</span>&gt;</span> <span class="comment">&lt;!-- the name of the controller --&gt;</span>  
+    <span class="comment">&lt;!-- code --&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre>
+<p>In the example above, the whole body can be controlled from the FirstController. You can also use a specific section when you apply the ng-controller attribute to a ‘div’ tag inside the body. This way you can use multiple controllers in the same view but different elements on that view.</p>
+<h3 id="$scope">$scope</h3><p>The scope parameter used in the definition of FirstController makes use of 2-way binding to the view (basicly said). A property added to scope, for example; $scope.title = “test”, can be used in html with the use of the double curly braces which were also used in the JsFiddle example to show the input of the user. $scope can be used for many things. You can use it to define properties, functions, sending events, etc. but scope is misused also. That’s why John Papa (Angular Evangelist) refers in his <a href="https://github.com/johnpapa/angular-styleguide" target="_blank" rel="external">Angular Styleguide</a> to the use of the ControllerAs syntax. The styleguide has some of the commonly used Angular development principles. When you get ready to work with Angular, don’t hesitate about reading this. Just do it!</p>
+<h3 id="ControllerAs">ControllerAs</h3><p>The ControllerAs has almost the same implementation as the traditional controller, but is difference when using $scope. You can still use $scope, but its better to avoid using it with only binding properties to a view. See:</p>
+<pre><code class="javascript">angular.module(<span class="string">"MyApp"</span>).controller(<span class="string">"FirstController"</span>, FirstController);
+
+<span class="function"><span class="keyword">function</span> <span class="title">FirstController</span>(<span class="params"></span>)</span>{
+  <span class="keyword">var</span> vm = <span class="keyword">this</span>; <span class="comment">// capture this in the top-layer function.</span>
+  vm.title = <span class="string">"test"</span>;
+  <span class="comment">// controller code</span>
+}
+</code></pre>
+<p>To use above controller as syntax in html. You must change the attribute to;</p>
+<pre><code class="html"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">ng-controller</span>=<span class="value">"FirstController as first"</span>&gt;</span> <span class="comment">&lt;!-- the name of the controller --&gt;</span>  
+  <span class="comment">&lt;!-- code --&gt;</span>
+  <span class="comment">&lt;!-- this will output the 'test' value --&gt;</span>
+  <span class="comment">   {{ first.title }}  </span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+</code></pre>
+<p>As you can see the $scope parameter is gone and the ‘this’ keyword is added. In this way you can achieve a more structured controller where $scope does not contain ALL the code.</p>
+<h2 id="References">References</h2><ul>
+<li>John Papa’s styling guide; <a href="https://github.com/johnpapa/angular-styleguide" target="_blank" rel="external">Styleguide</a></li>
+<li>Todd Motto’s post about the Controller As syntax; <a href="http://toddmotto.com/digging-into-angulars-controller-as-syntax/" target="_blank" rel="external">Todd Motto</a></li>
+<li>AngularJs - <a href="https://angularjs.org/" target="_blank" rel="external">https://angularjs.org/</a></li>
+</ul>
+<h3 id="Part_two-_already?!">Part two.. already?!</h3><p>Yep… Angular is pretty big to explain in just one post, so I will make several. In the next part I will dive more into injecting dependencies, services and some other stuff. I hope you enjoyed reading this. If you have any comments; please do not hesitate to comment below. </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;As this is my first blog post, I want to start off with the thing that is the most fresh in my mind… AngularJS. AngularJS is a Javascript framework developed and used internally by Google. In this post I want to dive into the things I learned while developing with AngularJS. Please note that I will refer to AngularJS when I type Angular (without the JS). For more information about Angular you can dive into the homepage of Angular found &lt;a href=&quot;https://www.angularjs.org/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="AngularJS" scheme="http://larsmeijdam.nl/categories/AngularJS/"/>
+    
+    
+      <category term="AngularJS" scheme="http://larsmeijdam.nl/tags/AngularJS/"/>
+    
+      <category term="Javascript" scheme="http://larsmeijdam.nl/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>First!</title>
+    <link href="http://larsmeijdam.nl/2015/10/first-post/"/>
+    <id>http://larsmeijdam.nl/2015/10/first-post/</id>
+    <published>2015-10-02T08:28:30.000Z</published>
+    <updated>2015-10-12T19:37:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Well hello there! Welcome to my personal blog! Let me first introduce myself… My name is Lars Meijdam and I live in the Netherlands. I’ve received a Bachelor degree in Software Engineering and am now currently working at Atos. If you want to know more about me… Please navigate to the <a href="/about">About</a> page!</p>
+<a id="more"></a>
+<h3 id="Blogging">Blogging</h3><p>As this is my first blog and also my first blog post I would like you all to know that there is no base purpose for this blog. I love developing software and figuring out stuff I like. The stuff you will find here is morelikely stuff that is found somewhere else on the internet also. This blog will just give me a short knowledgebase of my own creations.</p>
+<p>Good luck reading my posts and if you have any suggestions or tips please contact me!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Well hello there! Welcome to my personal blog! Let me first introduce myself… My name is Lars Meijdam and I live in the Netherlands. I’ve received a Bachelor degree in Software Engineering and am now currently working at Atos. If you want to know more about me… Please navigate to the &lt;a href=&quot;/about&quot;&gt;About&lt;/a&gt; page!&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="beginning" scheme="http://larsmeijdam.nl/categories/beginning/"/>
+    
+    
+      <category term="first" scheme="http://larsmeijdam.nl/tags/first/"/>
+    
+      <category term="introduction" scheme="http://larsmeijdam.nl/tags/introduction/"/>
+    
+  </entry>
+  
+</feed>
