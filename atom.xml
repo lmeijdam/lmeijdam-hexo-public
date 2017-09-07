@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://larsmeijdam.nl/"/>
-  <updated>2017-09-07T09:11:36.758Z</updated>
+  <updated>2017-09-07T11:35:08.436Z</updated>
   <id>http://larsmeijdam.nl/</id>
   
   <author>
@@ -16,15 +16,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Deploy Angular app to Azure</title>
+    <title>Deploy Angular App to Azure</title>
     <link href="http://larsmeijdam.nl/2017/09/Deploy-Angular-app-to-Azure/"/>
     <id>http://larsmeijdam.nl/2017/09/Deploy-Angular-app-to-Azure/</id>
     <published>2017-09-06T13:27:41.000Z</published>
-    <updated>2017-09-07T09:11:36.758Z</updated>
+    <updated>2017-09-07T11:35:08.436Z</updated>
     
-    <content type="html"><![CDATA[<p>A while ago I started blogging and I noticed I let it fade away a little bit. I was traveling for an amount of 6 months in New Zealand and had a lot to think about. On blogging I was brainstorming about a new post and thought on combining some new, great sounding, technologies which I tried out somewhat. Although I was busy creating a own project in the last days, I was struggling with hosting a Angular (v2+) application on Azure App Services.</p>
+    <content type="html"><![CDATA[<p>A while ago I started blogging and I noticed I let it fade away a little bit. I was traveling for an amount of 6 months in New Zealand and had a lot to think about. On blogging I was brainstorming about a new post and thought of combining some new, great sounding, technologies which I tried out somewhat. Although I was busy creating a project on my own in the last days, I was struggling with hosting an Angular (v2+) Application on Azure App Services.</p>
 <a id="more"></a>
-<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Before we head into coding, some tools are neede to get along this how-to. The tools are not mandatory as you can switch some tools with some of your own preference. In a nutshell, make sure you have the following installed;</p>
+<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Before we head into coding, some tools are needed to get along this how-to. The tools are not mandatory as you can switch some tools with some of your own preference. In a nutshell, make sure you have the following installed;</p>
 <ul>
 <li>NodeJs (<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>)</li>
 <li>GIT (<a href="https://git-scm.com/" target="_blank" rel="external">https://git-scm.com/</a>)</li>
@@ -34,15 +34,15 @@
 </ul>
 <p>First time using Azure? No problem… you can try it for free for 30 days! Find more information on <a href="https://azure.microsoft.com" target="_blank" rel="external">https://azure.microsoft.com</a>.</p>
 <h2 id="Creating-and-setting-up-the-Azure-App"><a href="#Creating-and-setting-up-the-Azure-App" class="headerlink" title="Creating and setting up the Azure App"></a>Creating and setting up the Azure App</h2><p>We’re using Azure’s own CLI to talk to Azure. Normally I would show you how to create it by some screenshot, but it might be easier, and even faster by doing it with the CLI. This because Azure’s online portal might shift some times and can,although it’s stable on most parts, be unclear or new to previous users.</p>
-<p>Let start. Be sure you have the Azure CLI installed and an registered account (or free account). For the CLI to make a connection we need to log in. Open up a command prompt and start typing;</p>
+<p>Let start. Be sure you have the Azure CLI installed and a registered account (or free account). For the CLI to make a connection we need to log in. Open up a command prompt and start typing;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">az login</div></pre></td></tr></table></figure>
 <p>This will show you an access code and a url to <a href="aka.ms/devicelogin">aka.ms/devicelogin</a>. Open a browser and use the code shown in the console. You will be logged in by your account details and your ‘device’ will be whitelisted to use the Azure CLI</p>
-<p>Next up is creating a new user on account level which is needed for FTP/GIT deployment access. It’s credentials differ from your subscription user credentials. To create a new deployment account we use;</p>
+<p>Next up is creating a new user on account level which is needed for FTP/GIT deployment access. Its credentials differ from your subscription user credentials. To create a new deployment account we use;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">az webapp deployment user set --user-name &lt;username&gt; --password &lt;password&gt;</div></pre></td></tr></table></figure>
 <p>The user created with above command can be used for other deployments across Azure’s Services. To relate and manage multiple Services, Azure uses Resource Groups. To create a Resource Group use the following command;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">az group create --name myResourceGroup --location westeurope</div></pre></td></tr></table></figure>
 <p><em>Note: You dont have to create a new Resource Group if you’ve already created one before for this purpose.</em></p>
-<p>After creating a Resource Group, it’s time to think about hosting our new application. Hosting is done on a so called App Service Plan. Although hosting a new app on a new Plan might come in handy, some people re-use an older or other Service Plan to reduce the cost in having multiple Plans.</p>
+<p>After creating a Resource Group, it’s time to think about hosting our new application. Hosting is done on a so-called App Service Plan. Although hosting a new app on a new Plan might come in handy, some people re-use an older or other Service Plan to reduce the cost in having multiple Plans.</p>
 <p>Creating a new App Service Plan can easily be achieved by using the following command;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE</div></pre></td></tr></table></figure>
 <p>Now most of setting up Azure is done, two things remain on the list… Creating an App and setting the deployment options. First let create the App;</p>
@@ -61,28 +61,17 @@
 <p>Wait a while as the project is getting all ready. Packages are getting installed and a test environment is being set up. If you see the CLI is done, you can then test the app with;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng serve</div></pre></td></tr></table></figure>
 <p>Browse to <a href="http://0.0.0.0:4200/" target="_blank" rel="external">http://0.0.0.0:4200/</a> to see if the app is working. and hopefully it’s a ‘YAY’ reaction!</p>
-<p>Now the App is set up and basicly ready for deployment, I would like to suggest an improvement. Start using the inline terminal of VSCode after project creation to use commands (Ctrl + `). It might be more handy and you have everything in one screen. Which is, I think personally, a really nice feature of VSCode.</p>
-<p>Before deploying the App to Azure we need to make sure it’s getting build. One strong key of building the application is the overall bundling and minifying of the files. Although the application is being build with ‘ng serve’ it’s better to build it for ‘production’ as this would enable <a href="https://github.com/angular/angular-cli/wiki/build" target="_blank" rel="external">tree shaking</a> and <a href="https://angular.io/guide/aot-compiler" target="_blank" rel="external">Ahead-of-time compilation</a>. The overall files are smaller in size and helps increasing loading and performance.</p>
+<p>Now the App is set up and basically ready for deployment, I would like to suggest an improvement. Start using the inline terminal of VSCode after project creation to use commands (Ctrl + `). It might be more handy and you have everything in one screen. Which is, I think personally, a really nice feature of VSCode.</p>
+<p>Before deploying the App to Azure we need to make sure it’s getting built. One strong key of building the application is the overall bundling and minifying of the files. Although the application is being built with ‘ng serve’ it’s better to build it for ‘production’ as this would enable <a href="https://github.com/angular/angular-cli/wiki/build" target="_blank" rel="external">tree shaking</a> and <a href="https://angular.io/guide/aot-compiler" target="_blank" rel="external">Ahead-of-time compilation</a>. The overall files are smaller in size and helps increasing loading and performance.</p>
 <p>Building the Angular App can be done by using the following command;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng build --prod</div></pre></td></tr></table></figure>
 <p>A new folder ‘/dist’ is being created and if you navigate to this folder you see a couple of files in it. Open up ‘index.html’ in a browser and you will see the app doesn’t work. Opening up the debug console makes you aware that some resources can’t be located. This is because the ‘base-href’. Edit ‘index.html’ in VSCode and update the ‘base-href’ to the following;</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"./"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><em>Note the ‘.’ added in front of the ‘/‘, this way it uses the current directory</em></p>
-<p>Refresh the browser where the ‘index.html’ file was opened and you will see the App working… Yay!</p>
-<p>Now we have created our Angular App and have set up everything in Azure, its time to deploy! Finally! Please read on to deploy our new App to Azure…</p>
-<h2 id="Deploy-the-new-App-by-using-GIT"><a href="#Deploy-the-new-App-by-using-GIT" class="headerlink" title="Deploy the new App by using GIT"></a>Deploy the new App by using GIT</h2><p>Create a new empty folder to deploy to your Azure App. As the Angular CLI removes the folder with “production generated” code. It would be wiser to just replace all of the generated code inside a new folder until the Angular CLI has improved this issue.</p>
-<p><em>Note: the –delete-output-path=false flag on ng build still removes the folder</em></p>
-<p>This newly created folder will be initialized as a local GIT repository. To do this use;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
-<p>Now remember when we set up our Azure app to be deployed by GIT? We’re gonna use this as our remote to push on! To set a new remote on the local GIT folder we’re using the remote add command;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add &lt;name&gt; https://&lt;username&gt;@&lt;app_name&gt;.scm.azurewebsites.net:443/&lt;app_name&gt;.git</div></pre></td></tr></table></figure>
-<p>Now the new remote is added we can verify by;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v</div></pre></td></tr></table></figure>
-<p>Next step is to copy all the files from the Angular App’s ‘dist’ folder to the newly created folder. As you can see, when using VSCode, the Source Control tab directly notifies you on changes inside of the folder.</p>
-<p>Stage all changes and make your first commit. This can be done by the VSCode IDE or with GIT by using;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &lt;message&gt;</div></pre></td></tr></table></figure>
-<p>Done committing? Basicly the last step is to push the remote to the server. We push this by;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push &lt;name&gt; master</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"./"</span>&gt;</span></div><div class="line">```` </div><div class="line"></div><div class="line"></div><div class="line">*Note the '.' added in front of the '/', this way it uses the current directory*</div><div class="line"></div><div class="line">Refresh the browser where the 'index.html' file was opened and you will see the App working... Yay!</div><div class="line"></div><div class="line">Now we have created our Angular App and have set up everything in Azure, its time to deploy! Finally! Please read on to deploy our new App to Azure...</div><div class="line"></div><div class="line">## Deploy the new App by using GIT</div><div class="line"></div><div class="line">Create a new empty folder to deploy to your Azure App. As the Angular CLI removes the folder with "production generated" code. It would be wiser to just replace all of the generated code inside a new folder until the Angular CLI has improved this issue.</div><div class="line"></div><div class="line">*Note: the --delete-output-path=false flag on ng build still removes the folder*</div><div class="line"></div><div class="line">This newly created folder will be initialized as a local GIT repository. To do this use;</div></pre></td></tr></table></figure>
+<p>git init<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Now remember when we set up our Azure app to be deployed by GIT? We&apos;re gonna use this as our remote to push on! To set a new remote on the local GIT folder we&apos;re using the remote add command;</div></pre></td></tr></table></figure></p>
+<p>git remote add <name> https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Now the new remote is added we can verify by;</div></pre></td></tr></table></figure></app_name></app_name></username></name></p>
+<p>git remote -v<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Next step is to copy all the files from the Angular App&apos;s &apos;dist&apos; folder to the newly created folder. As you can see, when using VSCode, the Source Control tab directly notifies you on changes inside of the folder.</div><div class="line"></div><div class="line">Stage all changes and make your first commit. This can be done by the VSCode IDE or with GIT by using;</div></pre></td></tr></table></figure></p>
+<p>git add .<br>git commit -m <message><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Done committing? Basicly the last step is to push the remote to the server. We push this by;</div></pre></td></tr></table></figure></message></p>
+<p>git push <name> master<br>```</name></p>
 <p>Now when navigating to <app_name>.azurewebsites.net will show you your new published App.</app_name></p>
 <h2 id="Done"><a href="#Done" class="headerlink" title="Done!"></a>Done!</h2><p>Nothing much needs to be added. You’ve successfully created and deployed your first Angular App to Azure… Well Done! Leave any comments or questions if you cross any bumps or have any improvement suggestions! See you next time!</p>
 <h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
@@ -95,7 +84,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;A while ago I started blogging and I noticed I let it fade away a little bit. I was traveling for an amount of 6 months in New Zealand and had a lot to think about. On blogging I was brainstorming about a new post and thought on combining some new, great sounding, technologies which I tried out somewhat. Although I was busy creating a own project in the last days, I was struggling with hosting a Angular (v2+) application on Azure App Services.&lt;/p&gt;
+      &lt;p&gt;A while ago I started blogging and I noticed I let it fade away a little bit. I was traveling for an amount of 6 months in New Zealand and had a lot to think about. On blogging I was brainstorming about a new post and thought of combining some new, great sounding, technologies which I tried out somewhat. Although I was busy creating a project on my own in the last days, I was struggling with hosting an Angular (v2+) Application on Azure App Services.&lt;/p&gt;
     
     </summary>
     
@@ -107,6 +96,10 @@
       <category term="Angular4" scheme="http://larsmeijdam.nl/tags/Angular4/"/>
     
       <category term="TypeScript" scheme="http://larsmeijdam.nl/tags/TypeScript/"/>
+    
+      <category term="Azure" scheme="http://larsmeijdam.nl/tags/Azure/"/>
+    
+      <category term="GIT" scheme="http://larsmeijdam.nl/tags/GIT/"/>
     
   </entry>
   
