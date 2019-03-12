@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Lars Meijdam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content=".Net and Web developer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lars Meijdam">
+<meta property="og:url" content="http://larsmeijdam.nl/index.html">
+<meta property="og:site_name" content="Lars Meijdam">
+<meta property="og:description" content=".Net and Web developer">
+<meta property="og:locale" content="NL - EN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lars Meijdam">
+<meta name="twitter:description" content=".Net and Web developer">
+  
+    <link rel="alternative" href="/atom.xml" title="Lars Meijdam" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600" rel="stylesheet" type="text/css">
+ <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  
+
+  
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><span class="site-title">Lars Meijdam</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://larsmeijdam.nl"></form>
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://larsmeijdam.nl"></form>
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/avatar.png">
+      <h2 id="name">Lars Meijdam</h2>
+      <h3 id="title">.Net and Web developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Netherlands</span>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        7
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        17
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/lmeijdam" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main">
+      <article id="post-Deploy-Angular-app-to-Azure" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      
+	
+		<a href="/2017/09/Deploy-Angular-app-to-Azure/" itemprop="url"><img src="https://content.nanobox.io/content/images/2017/05/angularjs-banner.png" class="article-banner"></a>
+	
+
+
+
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/Deploy-Angular-app-to-Azure/">Deploy Angular app to Azure</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2017/09/Deploy-Angular-app-to-Azure/">
+      <time datetime="2017-09-06T13:27:41.000Z" itemprop="datePublished">2017_09</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Angular/">Angular</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A while ago I started blogging and I noticed I let it fade away a little bit. I was traveling for an amount of 6 months in New Zealand and had a lot to think about. On blogging I was brainstorming about a new post and thought on combining some new, great sounding, technologies which I tried out somewhat. Although I was busy creating a own project in the last days, I was struggling with hosting a Angular (v2+) application on Azure App Services.</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/09/Deploy-Angular-app-to-Azure/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://larsmeijdam.nl/2017/09/Deploy-Angular-app-to-Azure/" data-id="cjt5ijo6d000014m30e7hsd6t" class="article-share-link">Share</a>
+      
+        <a href="http://larsmeijdam.nl/2017/09/Deploy-Angular-app-to-Azure/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular2/">Angular2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular4/">Angular4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GIT/">GIT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-Reacting-101-Start-off-with-React" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      
+	
+		<a href="/2016/08/Reacting-101-Start-off-with-React/" itemprop="url"><img src="https://learnable-images.s3.amazonaws.com/screencasts/a2a2543d-1502-4fac-9336-8f9627510105.png" class="article-banner"></a>
+	
+
+
+
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/Reacting-101-Start-off-with-React/">Reacting 101: Start off with React</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/08/Reacting-101-Start-off-with-React/">
+      <time datetime="2016-08-15T07:55:10.000Z" itemprop="datePublished">2016_08</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/ReactJS/">ReactJS</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In the world of web-based technologies it’s quite hard to focus on only one technology. Where technologies around the globe increases in popularity, it also came to my attention that I needed to dig into ReactJS. From a ‘Angular’ perspective I read a lot about React when Googling Angular solutions. In this topic I will give a 101 ‘Getting started’ on Facebooks React.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/08/Reacting-101-Start-off-with-React/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://larsmeijdam.nl/2016/08/Reacting-101-Start-off-with-React/" data-id="cjt5ijo6s000a14m33j11izup" class="article-share-link">Share</a>
+      
+        <a href="http://larsmeijdam.nl/2016/08/Reacting-101-Start-off-with-React/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSX/">JSX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-To-pack-or-not-to-pack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      
+	
+		<a href="/2016/07/To-pack-or-not-to-pack/" itemprop="url"><img src="http://i0.wp.com/julienrenaux.fr/wp-content/uploads/2015/03/webpack.png?resize=1075%2C605" class="article-banner"></a>
+	
+
+
+
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/To-pack-or-not-to-pack/">To pack, or not to pack</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/07/To-pack-or-not-to-pack/">
+      <time datetime="2016-07-27T10:38:32.000Z" itemprop="datePublished">2016_07</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Javascript/Webpack/">Webpack</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Shakespeare back from the dead?!? Not really..! I needed a cool name for my new topic and found his famous quote a perfect fit for my upcoming topic… file bundling or module bundling how it’s often called. In this first topic about bundling I want to kick of using Webpack. Webpack is one of many bundlers out there and I can’t wait to try more out. But first… <a href="https://webpack.github.io/" target="_blank" rel="noopener">Webpack</a>.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/07/To-pack-or-not-to-pack/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://larsmeijdam.nl/2016/07/To-pack-or-not-to-pack/" data-id="cjt5ijo6u000b14m3ypbcp5v7" class="article-share-link">Share</a>
+      
+        <a href="http://larsmeijdam.nl/2016/07/To-pack-or-not-to-pack/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bundler/">Bundler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modules/">Modules</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-Let-s-talk-Services" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      
+	
+		<a href="/2016/02/Let-s-talk-Services/" itemprop="url"><img src="http://i2.wp.com/wptheming.com/wp-content/uploads/2015/03/angular-banner.jpg?resize=800%2C300" class="article-banner"></a>
+	
+
+
+
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/Let-s-talk-Services/">Let&#39;s talk Services</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/02/Let-s-talk-Services/">
+      <time datetime="2016-02-20T14:09:31.000Z" itemprop="datePublished">2016_02</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Hello Again! As it has been a while since I’ve written something, I’d like to start off with the first 2016 post about the second part of my Angular experiences. In the first <a href="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/">part</a> I started off with some of the Angular basics and installation. In this post I want to set my focus on injecting dependencies and using services in Angular.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/Let-s-talk-Services/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://larsmeijdam.nl/2016/02/Let-s-talk-Services/" data-id="cjt5ijo6n000514m3j5gpdkc2" class="article-share-link">Share</a>
+      
+        <a href="http://larsmeijdam.nl/2016/02/Let-s-talk-Services/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Services/">Services</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-And-then-i-met-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      
+	
+		<a href="/2015/10/And-then-i-met-Hexo/" itemprop="url"><img src="https://theknowledgeaccelerator.com/2015/09/29/hello-world/hellohexo.svg" class="article-banner"></a>
+	
+
+
+
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/And-then-i-met-Hexo/">And then i met Hexo</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/10/And-then-i-met-Hexo/">
+      <time datetime="2015-10-30T17:24:41.000Z" itemprop="datePublished">2015_10</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Blogging/">Blogging</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Blogging/Hexo/">Hexo</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>After developing for a year now, I wanted to write stuff about it. Not because I’m a good developer, but because I want to keep track of my experiences in a somewhat interactive way. So I thought about creating a blog. But then… Where to start?, where to host?, what language?… Use Wordpress, or something completely different?. All these questions came by while thinking about creating a blog. At that moment I saw a blog of a friend, <a href="http://www.marcofranssen.nl/" target="_blank" rel="noopener">www.marcofranssen.nl</a>, and I questioned him on how he created that blog. At first he said he created it with Wordpress, but that was getting to slow when more posts were created. So he said he had rebuilt his blog to a static site generator, and let me meet <a href="http://www.hexo.io/" target="_blank" rel="noopener">Hexo</a>. </p>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/And-then-i-met-Hexo/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://larsmeijdam.nl/2015/10/And-then-i-met-Hexo/" data-id="cjt5ijo6j000214m3ikegil1y" class="article-share-link">Share</a>
+      
+        <a href="http://larsmeijdam.nl/2015/10/And-then-i-met-Hexo/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blogging/">blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-Angular-made-simple-part-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      
+	
+		<a href="/2015/10/Angular-made-simple-part-1/" itemprop="url"><img src="http://i2.wp.com/wptheming.com/wp-content/uploads/2015/03/angular-banner.jpg?resize=800%2C300" class="article-banner"></a>
+	
+
+
+
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/Angular-made-simple-part-1/">Angular made simple - Part one</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/10/Angular-made-simple-part-1/">
+      <time datetime="2015-10-20T16:24:41.000Z" itemprop="datePublished">2015_10</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>As this is my first blog post, I want to start off with the thing that is the most fresh in my mind… AngularJS. AngularJS is a Javascript framework developed and used internally by Google. In this post I want to dive into the things I learned while developing with AngularJS. Please note that I will refer to AngularJS when I type Angular (without the JS). For more information about Angular you can dive into the homepage of Angular found <a href="https://www.angularjs.org/" target="_blank" rel="noopener">here</a>.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/Angular-made-simple-part-1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/" data-id="cjt5ijo6p000614m3pqzl5emv" class="article-share-link">Share</a>
+      
+        <a href="http://larsmeijdam.nl/2015/10/Angular-made-simple-part-1/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      </nav>
+    </section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">recents</h3>
+    <div class="widget">
+      <ul id="recent-post" class>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2017/09/Deploy-Angular-app-to-Azure/" class="thumbnail">
+  
+    <span style="background-image:url(https://angular.io/assets/images/logos/angular/angular.png)" alt="Deploy Angular app to Azure" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Angular/">Angular</a></p>
+              <p class="item-title"><a href="/2017/09/Deploy-Angular-app-to-Azure/" class="title">Deploy Angular app to Azure</a></p>
+              <p class="item-date"><time datetime="2017-09-06T13:27:41.000Z" itemprop="datePublished">2017_09</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/08/Reacting-101-Start-off-with-React/" class="thumbnail">
+  
+    <span style="background-image:url(https://facebook.github.io/react/img/logo_og.png)" alt="Reacting 101: Start off with React" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/ReactJS/">ReactJS</a></p>
+              <p class="item-title"><a href="/2016/08/Reacting-101-Start-off-with-React/" class="title">Reacting 101: Start off with React</a></p>
+              <p class="item-date"><time datetime="2016-08-15T07:55:10.000Z" itemprop="datePublished">2016_08</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/07/To-pack-or-not-to-pack/" class="thumbnail">
+  
+    <span style="background-image:url(https://gitlab.com/uploads/project/avatar/765430/download.jpg)" alt="To pack, or not to pack" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Javascript/">Javascript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Javascript/Webpack/">Webpack</a></p>
+              <p class="item-title"><a href="/2016/07/To-pack-or-not-to-pack/" class="title">To pack, or not to pack</a></p>
+              <p class="item-date"><time datetime="2016-07-27T10:38:32.000Z" itemprop="datePublished">2016_07</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/02/Let-s-talk-Services/" class="thumbnail">
+  
+    <span style="background-image:url(http://media02.hongkiat.com/angularjs-tutorials-screencast/angularjs.jpg)" alt="Let&#39;s talk Services" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/AngularJS/">AngularJS</a></p>
+              <p class="item-title"><a href="/2016/02/Let-s-talk-Services/" class="title">Let&#39;s talk Services</a></p>
+              <p class="item-date"><time datetime="2016-02-20T14:09:31.000Z" itemprop="datePublished">2016_02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/10/And-then-i-met-Hexo/" class="thumbnail">
+  
+    <span style="background-image:url(https://pbs.twimg.com/profile_images/476729162707644418/mQZOTo9f.png)" alt="And then i met Hexo" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Blogging/">Blogging</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Blogging/Hexo/">Hexo</a></p>
+              <p class="item-title"><a href="/2015/10/And-then-i-met-Hexo/" class="title">And then i met Hexo</a></p>
+              <p class="item-date"><time datetime="2015-10-30T17:24:41.000Z" itemprop="datePublished">2015_10</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angular/">Angular</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blogging/">Blogging</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Blogging/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/Webpack/">Webpack</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ReactJS/">ReactJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/beginning/">beginning</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Angular2/" style="font-size: 10px;">Angular2</a> <a href="/tags/Angular4/" style="font-size: 10px;">Angular4</a> <a href="/tags/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/Bundler/" style="font-size: 10px;">Bundler</a> <a href="/tags/GIT/" style="font-size: 10px;">GIT</a> <a href="/tags/JSX/" style="font-size: 10px;">JSX</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Modules/" style="font-size: 10px;">Modules</a> <a href="/tags/ReactJS/" style="font-size: 10px;">ReactJS</a> <a href="/tags/Services/" style="font-size: 10px;">Services</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/blogging/" style="font-size: 10px;">blogging</a> <a href="/tags/first/" style="font-size: 10px;">first</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/introduction/" style="font-size: 10px;">introduction</a>
+    </div>
+  </div>
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Lars Meijdam
+    </div>
+  </div>
+</footer>
+    
+
+<script>
+  var disqus_shortname = 'larsmeijdam';
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
